@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expressões Regulares</title>
+
+<style>
+    .certo
+    {
+        background-color: rgba(110, 245, 110, 0.788);
+    }
+    .errado
+    {
+        background-color: rgb(243, 119, 119);
+    }
+</style>
+</head>
+<body>
+    DIGITE SEU CEP: <input maxlength="9" type="text" id="cep" onkeyup="validarCEP();">
+    DIGITE SEU TELEFONE <input type="text" id="telefone" onkeyup="validarTelefone();">
+    DIGITE SEU CPF <input  maxlength="11" type="text" id="cpf" onkeyup="validarCPF();">
+</body>
+<script>
+    function validarCEP()
+    {
+        expressao = /[0-9]{5}-[0-9]{3}/g;  //ACESSE O SITE regex101.com
+        texto = cep.value;
+        if (texto.length==5)
+        {
+            cep.value = texto + "-";
+        }
+        resposta = expressao.test(texto)
+        if (resposta==true)
+        {
+            cep.classList.remove ('errado');
+            cep.classList.add    ('certo');
+        }
+        if (resposta==false)
+        {
+            cep.classList.remove('certo');
+            cep.classList.add('errado');
+        }
+    }
+    function validarTelefone()
+    {
+        expressao = /\([0-9]{2}\) 9 [0-9]{4}-[0-9]{4}$/g;  //ACESSE O SITE regex101.com
+        texto = telefone.value;
+        resposta = expressao.test(texto)
+        if (resposta==true)
+        {
+            telefone.classList.remove ('errado');
+            telefone.classList.add    ('certo');
+        }
+        if (resposta==false)
+        {
+            telefone.classList.remove('certo');
+            telefone.classList.add('errado');
+        }
+    }
+        function validarCPF()
+    {
+        expressao = /[0-9]{11}$/g;  //ACESSE O SITE regex101.com
+        texto = cpf.value;
+        resposta = expressao.test(texto)
+        if (resposta==true)
+        {
+            cpf.classList.remove ('errado');
+            cpf.classList.add    ('certo');
+        }
+        if (resposta==false)
+        {
+            cpf.classList.remove('certo');
+            cpf.classList.add('errado');
+        }
+    }
+</script>
+</html>
